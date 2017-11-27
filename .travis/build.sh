@@ -6,7 +6,11 @@ source ".travis/release.properties"
 function do_regular_build() {
     echo "Performing regular build..."
 
-    mvn clean verify
+    setup
+
+    mvn clean verify \
+            -P release \
+            --settings .travis/release.settings.xml
 }
 
 function do_release() {
